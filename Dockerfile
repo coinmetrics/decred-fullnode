@@ -16,4 +16,7 @@ FROM alpine
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /go/bin/* /bin/
 
+RUN adduser -D -u 1000 runner
+USER runner
+
 ENTRYPOINT ["dcrd"]
